@@ -1,0 +1,69 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+    color:orange;
+
+}
+h3{
+text-transform: uppercase;
+font-size: x-large;
+font-weight: bold;
+text-indent: 12px;
+}
+.contenedor{
+    width: 100%;
+    height: 400px;
+    border:solid 2px black ;
+}
+
+.cuerpoTabla{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 12px;
+   
+}
+.cuerpoTabla tr,td{
+    padding: 5px;
+    border: solid 5px white;
+    height: auto;
+}
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+
+
+table{
+table-layout: auto;
+}
+
+.Error,.correcto{
+ border-radius: 100%;
+ border: solid 1px white;
+ font-size: small;
+ font-weight: 300;
+ background-color: red;
+ color: black;   
+ width: 60px;
+ height: 60px;
+}
+.correcto{
+    background-color: green;
+}
+.Principal{
+    background-color: yellow;
+    display: flex;
+    justify-content: end;
+    width: 15%;
+    height: 10%;
+    border: solid 1px black;
+    color:orange;
+}
