@@ -40,7 +40,16 @@ function conocimiento() {
       }
       PoperMein()
 }
+function local_categaria (select) {
+    let local=select
+    elige.innerHTML=" Star"
+    localStorage.setItem("musica",JSON.stringify(local))
+    const local_categaria=JSON.parse(localStorage.getItem('musica')) 
+    return console.log(local_categaria);
+}
 function musica() {
+    let musica="musica"
+    local_categaria(musica)
     elige.innerHTML=" Star"
     musica_categoria.classList.toggle('star')
     SeleccionDeCategoria.classList.toggle('star')
@@ -197,15 +206,52 @@ option1.setAttribute("value", "Pregunata directa");
     contenedor.appendChild(footer)
     const cerrar=document.createElement("button")
     const acectar=document.createElement("button")
+    const a =document.createElement('a')
     footer.appendChild(cerrar)
     footer.appendChild(acectar)
+    acectar.appendChild(a)
     cerrar.innerHTML="cerrar"
-    acectar.innerHTML="acectar"
+    a.href="file:///C:/Users/javacrispt/Desktop/Trivia/src/app/sectionDeLaPregunta/Pregunta.html"
+    a.innerHTML="acectar"
+
     footer.classList.add("footerPoper")   
-    cerrar.addEventListener("click",cierrar)
-    function cierrar() {
+    cerrar.addEventListener("click",cerra)
+    function cerra() {
         contenedor.style.display="none"
+        
+        acectar.addEventListener('click',Acectar)
     }
+    function Acectar (){
+        contenedor.style.display="none"
+        const CategoriaDePregunata=select.value
+        console.log(select.value);
+        var SelectDePregunata = localStorage.setItem("Select", JSON.stringify(CategoriaDePregunata));
+//conversion de objecto a cadena de texto
+console.log(localStorage.getItem("Select"));
+let = JSON.parse(localStorage.getItem("Select"));
+const musica=document.querySelector('.musicaCategoria')
+const arte=document.querySelector('.ArteCategoria')
+const cine=document.querySelector('.CineCategoria')
+const videoJuego=document.querySelector('.videoJuegoCategoria')
+const Deporte=document.querySelector('.DeporteCategoria')
+const ConocimientoGeneral=document.querySelector('.ConomientoGeneralCategoria')
+let CatageriaMusica=musica.getAttribute('class')
+let CategoriaArte=arte.getAttribute('class')
+let CategoriaCine=cine.getAttribute('class')
+let CategoriaVideoJuego=videoJuego.getAttribute('class')
+let CategoriaDeporte=Deporte.getAttribute('class')
+let MusicaLocal=localStorage.setItem('MusicaLocal',JSON.stringify(CatageriaMusica))
+let CatageriaMusica1=localStorage.getItem('MusicaLocal')
+console.log(CatageriaMusica1);
+
 }
 }
 
+
+}
+let DiregirURl=document.getElementsByTagName('a')
+DiregirURl.addEventListener('click',CambiarURL)
+function CambiarURL() {
+    
+    DiregirURl.href='file:///C:/Users/javacrispt/Desktop/Trivia/src/app/sectionDeLaPregunta/Pregunta.html'
+        }

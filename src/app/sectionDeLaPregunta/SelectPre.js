@@ -1,5 +1,18 @@
 const D=document
+const consultaTrivia={
+  conocimientoGeneralMultiple:'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple',
+ arte_Multiple:"https://opentdb.com/api.php?amount=10&category=25&difficulty=easy&type=multiple",
+ cine_multiple:"https://opentdb.com/api.php?amount=10&category=11&type=multiple",
+ musiaca_multiple:"https://opentdb.com/api.php?amount=10&category=12&type=multiple",
+ deporte_Pregunata_directa:"https://opentdb.com/api.php?amount=10&category=12&type=multiple",
+ Video_juego_Pregunata_cerrada:"https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=boolean"
+}
 const url='https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple'
+
+
+
+  
+
 const Pregunta =document.querySelector(".PreguntaDetrivia")
 const Next= D.querySelector(".flechaIzq","#fleIz")
 const Ul=D.querySelector("ul")
@@ -8,6 +21,11 @@ const lidos=D.querySelector(".lidos")
 const litres=D.querySelector(".litres")
 const licuatro=D.querySelector(".licuatro")
 const Progreso=D.querySelector(".Progreso")
+const salir =D.querySelector(".salir")
+
+
+
+
 
 
 const consulta= ()=>{
@@ -15,46 +33,105 @@ const consulta= ()=>{
 .then((respuesta)=>respuesta.json())
 .then((res)=>{
   
-  let R=res.results
-  R.forEach(element => {
+  let respuestaDelaTrivia=res.results
+  respuestaDelaTrivia.forEach(element => {
     respuesta.push(element)
+    console.log(respuestaDelaTrivia);
+    
   });
-  alert("listo")
+  let resTrivi=localStorage.setItem("respuesta",JSON.stringify(respuesta))
+    let consultaDeTrivia = localStorage.getItem('respuesta');
+    console.log(consultaDeTrivia);
+
+  alert("Empezemos")
   TAnimacionProgreso()
   PainPregunta(respuesta)
   PainPregunataCorrecta (respuesta)
   PainIncorrecta (respuesta)
+
   siguiente(triviaPregunta)
  
 
  
 })
 .catch((erro)=>{
- console.log("no cargo bien la pagina",erro)
+  console.log("no cargo bien la pagina",erro)
 }
 )
  }
 
+  consulta()
 
-const respuesta= [];
+const respuesta= []; 
+
 console.log(respuesta);
  let respuesaDeUsuarioBien=[]
  let respuesaDeUsuarioIncorrectas=[]
 let triviaPregunta=[]
 let triviaCorrecta=[]
+console.log("va",triviaCorrecta);
  let triviaIncorrecta=[]
  
- consulta()
 
-
+Next.addEventListener("click",next)
+let pos=0
+function next() {
+  let increpos=pos++
+  alert(increpos)
+ 
+  switch (increpos) {
+    case 0:
+      let consultaPregunata1 = localStorage.getItem('pregunataDeTrivia');
+  let parseConsultaDeTrivia=JSON.parse(consultaPregunata)
+    console.log("este es el pregunts",parseConsultaDeTrivia);
+    let P1=parseConsultaDeTrivia[0]
+ Pregunta.innerHTML=`${P1}`
+ 
+      break;
+    case 1: 
+    let consultaPregunata2 = localStorage.getItem('pregunataDeTrivia');
+  let parseConsultaDeTrivia2=JSON.parse(consultaPregunata)
+    console.log("este es el pregunts",parseConsultaDeTrivia);
+    let P2=parseConsultaDeTrivia[1]
+ Pregunta.innerHTML=`${P2}`
+    case 2: 
+    let consultaPregunata3 = localStorage.getItem('pregunataDeTrivia');
+    let parseConsultaDeTrivia3=JSON.parse(consultaPregunata)
+      console.log("este es el pregunts",parseConsultaDeTrivia);
+      let P3=parseConsultaDeTrivia[0]
+   Pregunta.innerHTML=`${P3}`
+      break; 
+    case 3:
+      let P4=parseConsultaDeTrivia[3]
+    Pregunta.innerHTML=`${P4}`
+      break;
+    default:
+      alert("total de pregunata")
+  }
+}
+ console.log(pos);
  const PainPregunta=(respuesta)=>{
+  
 let data=respuesta
  
   for (let i = 0; i < data.length; i++) {
    triviaPregunta.push(data[i].question)
   
   }
- console.log("este es el pregunts",triviaPregunta);
+  let resTrivi=localStorage.setItem("pregunataDeTrivia",JSON.stringify(triviaPregunta))
+    let consultaPregunata = localStorage.getItem('pregunataDeTrivia');
+    
+    
+  
+  let parseConsultaDeTrivia=JSON.parse(consultaPregunata)
+    console.log("este es el pregunts",parseConsultaDeTrivia);
+    let P1=parseConsultaDeTrivia[0]
+ 
+
+ Pregunta.innerHTML=`${P1}`
+ 
+  
+ 
  
 }
 
@@ -64,51 +141,54 @@ const PainPregunataCorrecta =(respuesta)=>{
     triviaCorrecta.push(Correcta[i].correct_answer)
    }
   console.log("este es el correcto",triviaCorrecta);
+  let resTrivi=localStorage.setItem("respuesta1",JSON.stringify(triviaCorrecta))
+  let consultaDeTrivia = localStorage.getItem('respuesta1');
+  let parseConsultaDeTrivia=JSON.parse(consultaDeTrivia)
+ 
+  
+  console.log("vamos",parseConsultaDeTrivia[0]);
+  console.log(consultaDeTrivia[0]);
   siguientePain(triviaPregunta)
   
  }
- 
+  
 
    const PainIncorrecta= (respuesta)=>{
+
     let Incorrecta = respuesta
+  
+  
     for (let i = 0; i < Incorrecta.length; i++) {
       triviaIncorrecta.push(Incorrecta[i].incorrect_answers)
-    
+   
+   
      }
     console.log("este es el incorrecto",triviaIncorrecta); 
-    Incorrctea(triviaIncorrecta)
-   
+    
       
       }
 
 
 
-Next.addEventListener("click",siguiente)
-let posicion=-0;
-console.log(posicion);
- function siguiente(triviaPregunta) {
-  let TRI=triviaPregunta
-  
-}
-const siguientePain= (LocalPregunta)=> {
- const [P1,P2,P3,P4,P5,P6,P7,P8,P9,P10]=triviaPregunta
 
-   Pregunta.innerHTML=P1
 
-} 
-
- const Incorrctea=(LocalRespuestaIncorrecta) =>{
-  const [I1,I2,I3,I4,I5,I6,I7,I8,I9,I10]=LocalRespuestaIncorrecta
-  console.log(I1);
+ const Incorrctea=() =>{
+  const [I1,I2,I3,I4,I5,I6,I7,I8,I9,I10]=respuesta
+  respuesta.forEach(element => {
+    console.log(element)
+  });
+  /* console.log(I1);
   const [E1,E2,E3]=I1
   liuno.innerHTML=`<i class="bi bi-circle-fill"></i>  ${E1}`
   lidos.innerHTML=`<i class="bi bi-circle-fill"></i>  ${E2}`
   litres.innerHTML=`<i class="bi bi-circle-fill"></i>  ${E3}`
   console.log("este Incorrecta",element);
+ */
 
 
+}
 
-} 
+Incorrctea()
 let lista1=liuno.setAttribute("value","false1")
 let lista2=lidos.setAttribute("value","false2")
  let lista3= litres.setAttribute("value","false3")
@@ -118,34 +198,12 @@ let lista2=lidos.setAttribute("value","false2")
   let valor3= liuno.getAttribute("value");
   let valor4= licuatro.getAttribute("value");
 
+  
 liuno.addEventListener("click",obtenerValorDeRespuestauno)
 lidos.addEventListener("click",obtenerValorDeRespuestados)
 litres.addEventListener("click",obtenerValorDeRespuestatres)
 licuatro.addEventListener("click",licorrecta)
-const consultaR= ()=>{
-  fetch(url)
-.then((respuesta)=>respuesta.json())
-.then((res)=>{
 
-let R=res.results
-R.forEach(element => {
-  respuesta.push(element)
-});
-//Loader
-TAnimacionProgreso()
-PainPregunta(respuesta)
-PainPregunataCorrecta (respuesta)
-PainIncorrecta (respuesta)
-siguiente(triviaPregunta)
-
-
-
-})
-.catch((erro)=>{
-console.log("no cargo bien la pagina",erro)
-}
-)
-}
  function obtenerValorDeRespuestauno() {
   "false1"==valor1?respuesaDeUsuarioIncorrectas.push(valor1):respuesaDeUsuarioIncorrectas.push(null)
 console.log(respuesaDeUsuarioIncorrectas);
@@ -174,10 +232,16 @@ function licorrecta() {
   console.log(correctoEvalucion);
 console.log(respuesaDeUsuarioBien)
 }
-const correcta=(LocalRespuestaCorrecta)=>{
-  const [C1,C2,C3,C4,C5,C6,C7,C8,C9,C10]=triviaIncorrecta
-  let Li=licuatro.innerHTML=`<i class="bi bi-circle-fill"></i>  ${C1}`
-  console.log("esta es la longuito",respuesaDeUsuarioIncorrectas.length);
+const correcta=()=>{
+  let consultaDeTrivia = localStorage.getItem('respuesta1');
+  let parseConsultaDeTrivia=JSON.parse(consultaDeTrivia)
+ 
+  
+  console.log("vamos",parseConsultaDeTrivia[0]);
+  console.log(consultaDeTrivia[0]);
+  let pre=consultaDeTrivia[0]
+  let Li=licuatro.innerHTML=`<i class="bi bi-circle-fill"></i>  ${pre}`
+ 
 }
 let coun =1;
 const contadorDeTrivia=()=>{
