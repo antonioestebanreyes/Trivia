@@ -81,29 +81,32 @@ function next() {
  
   switch (increpos) {
     case 0:
-      let consultaPregunata1 = localStorage.getItem('pregunataDeTrivia');
-  let parseConsultaDeTrivia=JSON.parse(consultaPregunata)
+      let consultaPregunata0 = localStorage.getItem('pregunataDeTrivia');
+  let parseConsultaDeTrivia=JSON.parse(consultaPregunata0)
     console.log("este es el pregunts",parseConsultaDeTrivia);
-    let P1=parseConsultaDeTrivia[0]
- Pregunta.innerHTML=`${P1}`
+    let P0=parseConsultaDeTrivia[0]
+ Pregunta.innerHTML=`${P0}`
  
       break;
     case 1: 
-    let consultaPregunata2 = localStorage.getItem('pregunataDeTrivia');
-  let parseConsultaDeTrivia2=JSON.parse(consultaPregunata)
-    console.log("este es el pregunts",parseConsultaDeTrivia);
-    let P2=parseConsultaDeTrivia[1]
- Pregunta.innerHTML=`${P2}`
+    let consultaPregunata1 = localStorage.getItem('pregunataDeTrivia');
+  let parseConsultaDeTrivia1=JSON.parse(consultaPregunata1)
+    console.log("este es el pregunts",parseConsultaDeTrivia1);
+    let P1=parseConsultaDeTrivia1[1]
+ Pregunta.innerHTML=`${P1}`
     case 2: 
-    let consultaPregunata3 = localStorage.getItem('pregunataDeTrivia');
-    let parseConsultaDeTrivia3=JSON.parse(consultaPregunata)
-      console.log("este es el pregunts",parseConsultaDeTrivia);
-      let P3=parseConsultaDeTrivia[0]
-   Pregunta.innerHTML=`${P3}`
+    let consultaPregunata2 = localStorage.getItem('pregunataDeTrivia');
+    let parseConsultaDeTrivia2=JSON.parse(consultaPregunata2)
+      console.log("este es el pregunts",parseConsultaDeTrivia2);
+      let P2=parseConsultaDeTrivia2[2]
+   Pregunta.innerHTML=`${P2}`
       break; 
     case 3:
-      let P4=parseConsultaDeTrivia[3]
-    Pregunta.innerHTML=`${P4}`
+      let consultaPregunata3 = localStorage.getItem('pregunataDeTrivia');
+      let parseConsultaDeTrivia3=JSON.parse(consultaPregunata3)
+        console.log("este es el pregunts",parseConsultaDeTrivia3);
+        let P3=parseConsultaDeTrivia3[3]
+     Pregunta.innerHTML=`${P3}`
       break;
     default:
       alert("total de pregunata")
