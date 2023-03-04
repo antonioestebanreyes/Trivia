@@ -74,9 +74,10 @@ console.log("va",triviaCorrecta);
  
 
 Next.addEventListener("click",next)
-let pos=0
+let pos=-0
 function next() {
   let increpos=pos++
+   NextCorrecta(increpos) 
   alert(increpos)
  
   switch (increpos) {
@@ -108,7 +109,45 @@ function next() {
         let P3=parseConsultaDeTrivia3[3]
      Pregunta.innerHTML=`${P3}`
       break;
+      case 4:
+        let consultaPregunata4=localStorage.getItem('pregunataDeTrivia');
+        let parseConsultaDeTrivia4=JSON.parse(consultaPregunata4)
+        let P4=parseConsultaDeTrivia4[4]
+        Pregunta.innerHTML=`${P4}`
+        break;
+        case 5:
+          let consultaPregunta5=localStorage.getItem("pregunataDeTrivia");
+          let parseConsultaDeTrivia5=JSON.parse(consultaPregunta5)
+          let P5=parseConsultaDeTrivia5[5]
+          Pregunta.innerHTML=`${P5}`
+          break;
+          case 6:
+          let consultaPregunata6=localStorage.getItem("pregunataDeTrivia");
+          let parseConsultaDeTrivia6=JSON.parse(consultaPregunata6)
+          let P6=parseConsultaDeTrivia6[6]
+          Pregunta.innerHTML=`${P6}`
+
+          break;
+          case 7:
+          let consultaPregunata7=localStorage.getItem("pregunataDeTrivia");
+          let parseConsultaDeTrivia7=JSON.parse(consultaPregunata7)
+          let P7=parseConsultaDeTrivia7[7]
+          Pregunta.innerHTML=`${P7}`
+
+          break;
+          case 8:
+          let consultaPregunata8=localStorage.getItem("pregunataDeTrivia");
+          let parseConsultaDeTrivia8=JSON.parse(consultaPregunata8)
+          let P8=parseConsultaDeTrivia8[8]
+          Pregunta.innerHTML=`${P8}`
+          break;
+          case 8:
+          let consultaPregunata9=localStorage.getItem("pregunataDeTrivia");
+          let parseConsultaDeTrivia9=JSON.parse(consultaPregunata9)
+          let P9=parseConsultaDeTrivia9[9]
+          Pregunta.innerHTML=`${P9}`
     default:
+
       alert("total de pregunata")
   }
 }
@@ -137,6 +176,45 @@ let data=respuesta
  
  
 }
+const NextCorrecta=(increpos)=>{
+
+ 
+
+  
+  switch (increpos) {
+    case 0:
+      let consultaPregunata0 = localStorage.getItem('respuesta1');
+      let parseConsultaDeTrivia0=JSON.parse(consultaPregunata0)
+        console.log("este es el pregunts",parseConsultaDeTrivia0);
+        let P0=parseConsultaDeTrivia0[0]
+     liuno.innerHTML=`${P0}`
+ 
+      break;
+    case 1: 
+    let consultaPregunata1 = localStorage.getItem('respuesta1');
+  let parseConsultaDeTrivia1=JSON.parse(consultaPregunata1)
+    console.log("este es el pregunts",parseConsultaDeTrivia1);
+    let P1=parseConsultaDeTrivia1[1]
+ liuno.innerHTML=`${P1}`
+    case 2: 
+    let consultaPregunata2 = localStorage.getItem('respuesta1');
+    let parseConsultaDeTrivia2=JSON.parse(consultaPregunata2)
+      console.log("este es el pregunts",parseConsultaDeTrivia2);
+      let P2=parseConsultaDeTrivia2[2]
+   liuno.innerHTML=`${P2}`
+      break; 
+    case 3:
+      let consultaPregunata3 = localStorage.getItem('respuesta1');
+      let parseConsultaDeTrivia3=JSON.parse(consultaPregunata3)
+        console.log("este es el pregunts",parseConsultaDeTrivia3);
+        let P3=parseConsultaDeTrivia3[3]
+        liuno.innerHTML=`${P3}`
+      break;
+    default:
+      alert("total de pregunata")
+}}
+
+ 
 
 const PainPregunataCorrecta =(respuesta)=>{
   let Correcta=respuesta
@@ -175,23 +253,7 @@ const PainPregunataCorrecta =(respuesta)=>{
 
 
 
- const Incorrctea=() =>{
-  const [I1,I2,I3,I4,I5,I6,I7,I8,I9,I10]=respuesta
-  respuesta.forEach(element => {
-    console.log(element)
-  });
-  /* console.log(I1);
-  const [E1,E2,E3]=I1
-  liuno.innerHTML=`<i class="bi bi-circle-fill"></i>  ${E1}`
-  lidos.innerHTML=`<i class="bi bi-circle-fill"></i>  ${E2}`
-  litres.innerHTML=`<i class="bi bi-circle-fill"></i>  ${E3}`
-  console.log("este Incorrecta",element);
- */
-
-
-}
-
-Incorrctea()
+ 
 let lista1=liuno.setAttribute("value","false1")
 let lista2=lidos.setAttribute("value","false2")
  let lista3= litres.setAttribute("value","false3")
