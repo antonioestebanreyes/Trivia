@@ -71,10 +71,33 @@ let triviaPregunta=[]
 let triviaCorrecta=[]
 console.log("va",triviaCorrecta);
  let triviaIncorrecta=[]
+ console.log("ok",triviaIncorrecta);
+ let post=0;
+ const NextCorrecta=()=>{
+  let increpos=post++
+  alert(increpos)
+  let RespuestaCorrecta = localStorage.getItem('respuesta1');
+  let RepuestaCorrecta=JSON.parse(RespuestaCorrecta)
+    console.log("este es el pregunts",RepuestaCorrecta);
+                          
+for (let i = 0; i < RepuestaCorrecta.length; i++) {
+ if (i===increpos) {
+ let P= RepuestaCorrecta[i]
+  liuno.innerHTML=`${P}`
+ }else if (increpos===i){
+alert("Termino el cuestinario")
+ }
+  
+}
  
 
+  
+  
+}
+NextCorrecta()
+
 Next.addEventListener("click",nextPre)
-let pos=0
+let pos=1
 function nextPre() {
   let increpos=pos++
   alert(increpos)
@@ -96,23 +119,24 @@ alert("Termino el cuestinario")
 
 
  prev.addEventListener("click",prevX)
-let Necre=9
+
 function prevX() {
-  let increpos=pos--
-  alert(Necre)
-  let RespuestaCorrecta = localStorage.getItem('respuesta1');
-  let triviaCorrecta=JSON.parse(RespuestaCorrecta)
-    console.log("este es el pregunts",triviaCorrecta);
-for (let i = 9; i < triviaCorrecta.length; i--) {
+ 
+  let increpos=post-1
+  alert(increpos)
+  let RespuestaCorrecta1 = localStorage.getItem('respuesta1');
+  let RespuestaCorrecta=JSON.parse(RespuestaCorrecta1)
+    console.log("este es el pregunts",RespuestaCorrecta);
+                          
+for (let i = 9; i <= RespuestaCorrecta.length; i--) {
  if (i===increpos) {
- let P= triviaCorrecta[i]
-  Pregunta.innerHTML=`${P}`
+ let R= RespuestaCorrecta[i]
+ liuno.innerHTML=`${R}`
  }else if (increpos===i){
 alert("Termino el cuestinario")
  }
-}
   
-}
+}}
 
 
 
@@ -142,16 +166,10 @@ let data=respuesta
  Pregunta.innerHTML=`${P1}`
  
   
- 
+ Next.addEventListener("click",NextCorrecta)
  
 }
- const NextCorrecta=(increpos)=>{
 
- 
-
-  
-  
-}
  
  
 
@@ -176,15 +194,19 @@ const PainPregunataCorrecta =(respuesta)=>{
 
    const PainIncorrecta= (respuesta)=>{
 
-    let Incorrecta = respuesta
+    let incorrecta=respuesta
+  for (let i = 0; i < incorrecta.length; i++) {
+    triviaCorrecta.push( incorrecta[i].correct_answer)
+   }
+  console.log("este es el correcto",triviaCorrecta);
+  let resTrivi=localStorage.setItem("Incorrecta",JSON.stringify(triviaCorrecta))
+  let consultaDeTrivia = localStorage.getItem('Incorrecta');
+  let parseConsultaDeTrivia=JSON.parse(consultaDeTrivia)
+ 
   
-  
-    for (let i = 0; i < Incorrecta.length; i++) {
-      triviaIncorrecta.push(Incorrecta[i].incorrect_answers)
-   
-   
-     }
-    console.log("este es el incorrecto",triviaIncorrecta); 
+  console.log("vamos",parseConsultaDeTrivia[0]);
+  console.log(consultaDeTrivia[0]);
+  siguientePain(triviaPregunta)
     
       
       }
