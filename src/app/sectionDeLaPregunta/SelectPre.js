@@ -187,7 +187,7 @@ const PainPregunataCorrecta =(respuesta)=>{
   
   console.log("vamos",parseConsultaDeTrivia[0]);
   console.log(consultaDeTrivia[0]);
-  siguientePain(triviaPregunta)
+ 
   
  }
   
@@ -195,22 +195,52 @@ const PainPregunataCorrecta =(respuesta)=>{
    const PainIncorrecta= (respuesta)=>{
 
     let incorrecta=respuesta
-  for (let i = 0; i < incorrecta.length; i++) {
-    triviaCorrecta.push( incorrecta[i].correct_answer)
+    console.log("que esta pasado",respuesta[0].incorrect_answers);
+  for (let i = 0; i < respuesta.length; i++) {
+    triviaIncorrecta.push( incorrecta[i].incorrect_answers )
    }
-  console.log("este es el correcto",triviaCorrecta);
-  let resTrivi=localStorage.setItem("Incorrecta",JSON.stringify(triviaCorrecta))
+
+  let resTrivi=localStorage.setItem("Incorrecta",JSON.stringify(triviaIncorrecta))
   let consultaDeTrivia = localStorage.getItem('Incorrecta');
   let parseConsultaDeTrivia=JSON.parse(consultaDeTrivia)
  
   
-  console.log("vamos",parseConsultaDeTrivia[0]);
-  console.log(consultaDeTrivia[0]);
-  siguientePain(triviaPregunta)
+
+  
+  
+}
+Next.addEventListener("click",PintarIncorreta)
+let IncorrectaPosicion=0
+function PintarIncorreta(){
+  let Posicion=IncorrectaPosicion++
+  let resTrivi=localStorage.setItem("Incorrecta",JSON.stringify(triviaIncorrecta))
+  let consultaDeTrivia = localStorage.getItem('Incorrecta');
+  let parseConsultaDeTrivia=JSON.parse(consultaDeTrivia)
+ 
+  
+//Logica de respuesta inocrreta
+
+for (let index = 0; index < parseConsultaDeTrivia.length; index++) {
+  const element = parseConsultaDeTrivia[pos];
+  if (index===Posicion) {
+    console.log(element);
+     const [Incorrecta1,Incorrecta2,Incorrecta3]=element
+     lidos.innerHTML=Incorrecta1
+     litres.innerHTML=Incorrecta2
+     licuatro.innerHTML=Incorrecta3
+
+  }
+}
+  
+
+
+  
+  
+ 
     
       
       }
-
+      
 
 
 
