@@ -165,7 +165,7 @@ let data=respuesta
 
  Pregunta.innerHTML=`${P1}`
  
-  
+  Next.addEventListener("click",PintarIncorreta)
  Next.addEventListener("click",NextCorrecta)
  
 }
@@ -209,9 +209,10 @@ const PainPregunataCorrecta =(respuesta)=>{
   
   
 }
-Next.addEventListener("click",PintarIncorreta)
+
 let IncorrectaPosicion=0
 function PintarIncorreta(){
+
   let Posicion=IncorrectaPosicion++
   let resTrivi=localStorage.setItem("Incorrecta",JSON.stringify(triviaIncorrecta))
   let consultaDeTrivia = localStorage.getItem('Incorrecta');
@@ -231,15 +232,8 @@ for (let index = 0; index < parseConsultaDeTrivia.length; index++) {
 
   }
 }
-  
-
-
-  
-  
+ }
  
-    
-      
-      }
       
 
 
@@ -262,6 +256,7 @@ litres.addEventListener("click",obtenerValorDeRespuestatres)
 licuatro.addEventListener("click",licorrecta)
 
  function obtenerValorDeRespuestauno() {
+  TAnimacionProgreso()
   "false1"==valor1?respuesaDeUsuarioIncorrectas.push(valor1):respuesaDeUsuarioIncorrectas.push(null)
 console.log(respuesaDeUsuarioIncorrectas);
 
@@ -316,7 +311,15 @@ const TAnimacionProgreso=()=>{
   
 if (couan>=400) {
   alert("Termino el tiempo")
-  clearInterval(P)
+  if (couan>=400) {
+    couan=0
+    couan+=10
+
+  console.log(couan);
+  Progreso.style.width=couan+"px"
+  }else if(couan===0){
+    nextPre()
+  }
   
 }else{
   couan+=10
@@ -327,6 +330,9 @@ if (couan>=400) {
 }
 
 }
+
+ 
 let P=setInterval(TiempoProgreso,1000)
+ 
 
 }
