@@ -76,6 +76,7 @@ console.log("va",triviaCorrecta);
  const NextCorrecta=()=>{
   let increpos=post++
   alert(increpos)
+  
   let RespuestaCorrecta = localStorage.getItem('respuesta1');
   let RepuestaCorrecta=JSON.parse(RespuestaCorrecta)
     console.log("este es el pregunts",RepuestaCorrecta);
@@ -100,7 +101,7 @@ Next.addEventListener("click",nextPre)
 let pos=1
 function nextPre() {
   let increpos=pos++
-  alert(increpos)
+  alert(increpos,"pregunta")
   let consultaPregunata0 = localStorage.getItem('pregunataDeTrivia');
   let parseConsultaDeTrivia=JSON.parse(consultaPregunata0)
     console.log("este es el pregunts",parseConsultaDeTrivia);
@@ -148,7 +149,7 @@ alert("Termino el cuestinario")
  const PainPregunta=(respuesta)=>{
   
 let data=respuesta
- 
+ PintarIncorreta()
   for (let i = 0; i < data.length; i++) {
    triviaPregunta.push(data[i].question)
   
@@ -164,7 +165,7 @@ let data=respuesta
  
 
  Pregunta.innerHTML=`${P1}`
- 
+
   Next.addEventListener("click",PintarIncorreta)
  Next.addEventListener("click",NextCorrecta)
  
@@ -195,7 +196,7 @@ const PainPregunataCorrecta =(respuesta)=>{
    const PainIncorrecta= (respuesta)=>{
 
     let incorrecta=respuesta
-    console.log("que esta pasado",respuesta[0].incorrect_answers);
+    console.log("que esta pasado",respuesta.incorrect_answers);
   for (let i = 0; i < respuesta.length; i++) {
     triviaIncorrecta.push( incorrecta[i].incorrect_answers )
    }
@@ -222,7 +223,7 @@ function PintarIncorreta(){
 //Logica de respuesta inocrreta
 
 for (let index = 0; index < parseConsultaDeTrivia.length; index++) {
-  const element = parseConsultaDeTrivia[pos];
+  const element = parseConsultaDeTrivia[index];
   if (index===Posicion) {
     console.log(element);
      const [Incorrecta1,Incorrecta2,Incorrecta3]=element
@@ -314,11 +315,14 @@ if (couan>=400) {
   if (couan>=400) {
     couan=0
     couan+=10
+    NextCorrecta()
+    nextPre() 
+    PainIncorrecta()
+    
+    
 
   console.log(couan);
   Progreso.style.width=couan+"px"
-  }else if(couan===0){
-    nextPre()
   }
   
 }else{
