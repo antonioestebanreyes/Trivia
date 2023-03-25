@@ -1,5 +1,6 @@
 
-import { TAnimacionProgreso } from "./AnimationProgreso.js"
+//import { TAnimacionProgreso } from "./AnimationProgreso.js"
+//import { PintarIncorretaOne } from "./next.js"
  export function ErroresYCorrecto(){
   
   const D=document
@@ -28,10 +29,10 @@ import { TAnimacionProgreso } from "./AnimationProgreso.js"
     licuatro.addEventListener("click",licorrecta)
     
      function obtenerValorDeRespuestauno() {
-      TAnimacionProgreso()
+      
       "false1"==valor1?respuesaDeUsuarioIncorrectas.push(valor1):respuesaDeUsuarioIncorrectas.push(null)
     console.log(respuesaDeUsuarioIncorrectas);
-    
+    PintarIncorretaOne()
     
     
     
@@ -42,7 +43,7 @@ import { TAnimacionProgreso } from "./AnimationProgreso.js"
       localStorage.setItem("incorrecta", JSON.stringify(respuesaDeUsuarioIncorrectas));
       const incorrectoEvalucion=JSON.parse(localStorage.getItem("incorrecta"))
       console.log(incorrectoEvalucion);
-      contadorDeTrivia()
+      
     }
     function obtenerValorDeRespuestatres() {
       "false1"==valor1?respuesaDeUsuarioIncorrectas.push(valor3):respuesaDeUsuarioIncorrectas.push(null)

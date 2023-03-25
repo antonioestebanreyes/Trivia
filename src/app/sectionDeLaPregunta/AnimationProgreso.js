@@ -1,4 +1,4 @@
-/* import { NextCorrecta,nextPre,PainIncorrecta } from "./SelectPre" */
+ //import { nextPre } from "./SelectPre" 
 const Progreso=document.querySelector(".Progreso")
 export const TAnimacionProgreso=()=>{
     let couan=0
@@ -6,15 +6,14 @@ export const TAnimacionProgreso=()=>{
     const TiempoProgreso=()=> {
     const itemInocrrecto=localStorage.getItem("incorrecta")
     const parseo=JSON.parse(itemInocrrecto)
-   
-  if (couan>=400||"false1"===parseo[0]) {
+  
+  if (couan>=400  ) {
     alert("Termino el tiempo")
     if (couan>=400) {
       couan=0
       couan+=10
-   /*    NextCorrecta()
-      nextPre() 
-      PainIncorrecta() */
+       
+      
       
       
   
