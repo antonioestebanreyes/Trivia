@@ -40,16 +40,17 @@ function conocimiento() {
       }
       PoperMein()
 }
-function local_categaria (select) {
+/* function local_categaria (select) {
+    console.log("este valor de local",select);
     let local=select
     elige.innerHTML=" Star"
     localStorage.setItem("musica",JSON.stringify(local))
     const local_categaria=JSON.parse(localStorage.getItem('musica')) 
     return console.log(local_categaria);
-}
+} */
 function musica() {
     let musica="musica"
-    local_categaria(musica)
+  //  local_categaria(musica)
     elige.innerHTML=" Star"
     musica_categoria.classList.toggle('star')
     SeleccionDeCategoria.classList.toggle('star')
@@ -62,6 +63,9 @@ const starAtributo=musica_categoria.getAttribute("class")
         CineCategoria.removeEventListener('click',Cine)
         DeporteCategoria.removeEventListener('click',Deporte)
         ConomientoGeneralCategoria.removeEventListener('click',conocimiento) 
+        localStorage.setItem("musi",JSON.stringify(musica))
+    const local_categaria=JSON.parse(localStorage.getItem('musi')) 
+     console.log(local_categaria);
   
       } else {
           console.log("no tiene la class");
@@ -71,6 +75,7 @@ const starAtributo=musica_categoria.getAttribute("class")
           ConomientoGeneralCategoria.addEventListener('click',conocimiento) 
           video_juego_categoria.addEventListener('click',video)
           elige.innerHTML="ELIGE TU CATEGORIA"
+          localStorage.removeItem("musi")
       }
       PoperMein()
 }
@@ -210,6 +215,16 @@ option1.setAttribute("value", "Pregunata directa");
     footer.appendChild(cerrar)
     footer.appendChild(acectar)
     acectar.appendChild(a)
+    acectar.addEventListener("click",function(){
+       
+       let UserSelect=select.value
+      const SelecionUser= localStorage.setItem("selecionUser",JSON.stringify(UserSelect))
+      const GetSelect=localStorage.getItem("selecionUser")
+      const ParseoSelect=JSON.parse(GetSelect)
+      console.log(ParseoSelect);
+       // a.href="http://127.0.0.1:5500/src/app/sectionDeLaPregunta/Pregunta.html"
+        
+    })
     cerrar.innerHTML="cerrar"
     a.href="file:///C:/Users/javacrispt/Desktop/Trivia/src/app/sectionDeLaPregunta/Pregunta.html"
     a.innerHTML="acectar"
@@ -249,9 +264,4 @@ console.log(CatageriaMusica1);
 
 
 }
-let DiregirURl=document.getElementsByTagName('a')
-DiregirURl.addEventListener('click',CambiarURL)
-function CambiarURL() {
-    
-    DiregirURl.href='file:///C:/Users/javacrispt/Desktop/Trivia/src/app/sectionDeLaPregunta/Pregunta.html'
-        }
+ 

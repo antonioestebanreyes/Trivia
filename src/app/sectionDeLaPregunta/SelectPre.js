@@ -220,9 +220,9 @@ for (let index = 0; index < parseConsultaDeTrivia.length; index++) {
 
 salir.addEventListener("click",function () {
   let Close=prompt("desas salir de la trivia de pregunata")
-let M= Close.toLowerCase()
-  console.log(M );
- if(Close=='si' ){
+let CloseTolowerCase= Close.toLowerCase()
+  
+ if(CloseTolowerCase=='si' ){
 alert("Salido de la trivia")
 location.href="http://127.0.0.1:5500/Home/index.html";
  }else{
