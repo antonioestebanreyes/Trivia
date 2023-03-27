@@ -26,8 +26,26 @@ body{
     justify-content: center;
     width: 100%;
     height: 400px;
+
+
     
 }
+
+ @media(min-width:100px){
+#contenedor{
+   flex-wrap: nowrap;
+ 
+}
+}
+@media(max-width:500px){
+    #contenedor{
+        flex-wrap: wrap;
+        row-gap: 13px;
+        column-gap: 13px;
+
+      
+    }
+} 
 #contenedor div{
    width:150px;
    height:100px;
