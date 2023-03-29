@@ -2,6 +2,36 @@ const D=document
 import {consultaTrivia} from '../../services/servicesTrivia.js'
 import { TAnimacionProgreso } from './AnimationProgreso.js'
 import { ErroresYCorrecto } from './EroresYcorrecto.js'
+const TituloDeCategoria=D.querySelector('.subtitulo')
+
+
+let Categoria1=localStorage.getItem('conocimientoGeneralMultiple')
+let Categoria2=localStorage.getItem('cine_multiple')
+let Categoria3=localStorage.getItem('musiaca_multiple')
+let Categoria4=localStorage.getItem(' musiaca_multiple')
+let Categoria5=localStorage.getItem('deporte_Pregunata_directa')
+
+let Categoria1Parse=JSON.parse(Categoria1)
+let Categoria2Parse=JSON.parse(Categoria2)
+let Categoria3Parse=JSON.parse(Categoria3)
+let Categoria4Parse=JSON.parse(Categoria4)
+let Categoria5Parse=JSON.parse(Categoria5)
+
+const Valtion=()=>{
+console.log(typeof Categoria1Parse);
+console.log(typeof Categoria2); 
+
+  Categoria1Parse!==null?TituloDeCategoria.innerHTML=Categoria1Parse:TituloDeCategoria.innerHTML="Categoria1"
+  Categoria2Parse!==null?TituloDeCategoria.innerHTML=Categoria2Parse:TituloDeCategoria.innerHTML="Categoria1"
+  Categoria3Parse!==null?TituloDeCategoria.innerHTML=Categoria3Parse:TituloDeCategoria.innerHTML="Categoria1"
+  Categoria4Parse!==null?TituloDeCategoria.innerHTML=Categoria4Parse:TituloDeCategoria.innerHTML="Categoria1"
+  Categoria5Parse!==null?TituloDeCategoria.innerHTML=Categoria5Parse:TituloDeCategoria.innerHTML="Categoria1"
+}
+Valtion()
+
+
+
+
 const Consulta=consultaTrivia.url
 
 

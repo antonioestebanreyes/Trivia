@@ -17,6 +17,8 @@ musica_categoria.addEventListener('click',musica)
  DeporteCategoria.addEventListener('click',Deporte)
 ConomientoGeneralCategoria.addEventListener('click',conocimiento)   
 function conocimiento() {
+    let conocimiento='conocimientoGeneralMultiple'
+    let categoria='conocimientoGeneralMultiple'
     elige.innerHTML=" Star"
     ConomientoGeneralCategoria.classList.toggle('star')
     SeleccionDeCategoria.classList.toggle('star')
@@ -28,7 +30,7 @@ function conocimiento() {
         CineCategoria.removeEventListener('click',Cine)
         DeporteCategoria.removeEventListener('click',Deporte)
         video_juego_categoria.removeEventListener('click',video)
-  
+  LocalCategoria(conocimiento,categoria)
       } else {
           console.log("no tiene la class");
           musica_categoria.addEventListener('click',musica)
@@ -37,19 +39,19 @@ function conocimiento() {
           DeporteCategoria.addEventListener('click',Deporte)
           video_juego_categoria.removeEventListener('click',video)
           elige.innerHTML="ELIGE TU CATEGORIA"
+          localStorage.removeItem('conocimientoGeneralMultiple')
       }
       PoperMein()
 }
-/* function local_categaria (select) {
-    console.log("este valor de local",select);
-    let local=select
-    elige.innerHTML=" Star"
-    localStorage.setItem("musica",JSON.stringify(local))
-    const local_categaria=JSON.parse(localStorage.getItem('musica')) 
-    return console.log(local_categaria);
-} */
+
+function LocalCategoria(selection,categoria) {
+    localStorage.setItem(categoria,JSON.stringify(selection))
+    const local_categaria=localStorage.getItem(categoria)
+     console.log(typeof local_categaria);
+}
 function musica() {
-    let musica="musica"
+    let musica="musiaca_multiple"
+    let categoria="musiaca_multiple"
   //  local_categaria(musica)
     elige.innerHTML=" Star"
     musica_categoria.classList.toggle('star')
@@ -63,9 +65,7 @@ const starAtributo=musica_categoria.getAttribute("class")
         CineCategoria.removeEventListener('click',Cine)
         DeporteCategoria.removeEventListener('click',Deporte)
         ConomientoGeneralCategoria.removeEventListener('click',conocimiento) 
-        localStorage.setItem("musi",JSON.stringify(musica))
-    const local_categaria=JSON.parse(localStorage.getItem('musi')) 
-     console.log(local_categaria);
+      LocalCategoria(musica,categoria)
   
       } else {
           console.log("no tiene la class");
@@ -75,11 +75,13 @@ const starAtributo=musica_categoria.getAttribute("class")
           ConomientoGeneralCategoria.addEventListener('click',conocimiento) 
           video_juego_categoria.addEventListener('click',video)
           elige.innerHTML="ELIGE TU CATEGORIA"
-          localStorage.removeItem("musi")
+          localStorage.removeItem("musiaca_multiple")
       }
       PoperMein()
 }
 function video() {
+    let video='Video_juego_Pregunata_cerrada'
+    let categoria='Video_juego_Pregunata_cerrada'
     elige.innerHTML=" Star"
     video_juego_categoria.classList.toggle('star')
     SeleccionDeCategoria.classList.toggle('star')
@@ -91,6 +93,7 @@ function video() {
       CineCategoria.removeEventListener('click',Cine)
       DeporteCategoria.removeEventListener('click',Deporte)
       ConomientoGeneralCategoria.removeEventListener('click',conocimiento) 
+      LocalCategoria(video,categoria)
 
     } else {
         console.log("no tiene la class");
@@ -100,10 +103,13 @@ function video() {
         DeporteCategoria.addEventListener('click',Deporte)
         ConomientoGeneralCategoria.addEventListener('click',conocimiento) 
         elige.innerHTML="ELIGE TU CATEGORIA"
+        localStorage.removeItem('Video_juego_Pregunata_cerrada')
     }
     PoperMein()
 }
 function Arte() {
+    let Arte='arte_Multiple'
+    let Categoria='arte_Multiple'
     elige.innerHTML=" Star"
     Arte_categoria.classList.toggle('star')
     SeleccionDeCategoria.classList.toggle('star')
@@ -115,6 +121,7 @@ function Arte() {
         DeporteCategoria.removeEventListener('click',Deporte)
         ConomientoGeneralCategoria.removeEventListener('click',conocimiento) 
         video_juego_categoria.removeEventListener('click',video)
+        LocalCategoria(Arte,Categoria)
   
       } else {
           console.log("no tiene la class");
@@ -124,11 +131,14 @@ function Arte() {
           ConomientoGeneralCategoria.addEventListener('click',conocimiento) 
           video_juego_categoria.addEventListener('click',video)
           elige.innerHTML="ELIGE TU CATEGORIA"
+          localStorage.removeItem('arte_Multiple')
       }
       PoperMein()
 }
 
 function Cine() {
+    let cine='cine_multiple'
+    let categoria='cine_multiple'
     elige.innerHTML=" Star"
     CineCategoria.classList.toggle('star')
     SeleccionDeCategoria.classList.toggle('star')
@@ -140,7 +150,7 @@ function Cine() {
         ConomientoGeneralCategoria.removeEventListener('click',conocimiento) 
         video_juego_categoria.removeEventListener('click',video)
         Arte_categoria.removeEventListener('click',Arte)
-  
+  LocalCategoria(cine,categoria)
       } else {
           console.log("no tiene la class");
           musica_categoria.addEventListener('click',musica)
@@ -150,11 +160,14 @@ function Cine() {
           video_juego_categoria.addEventListener('click',video)
           Arte_categoria.addEventListener('click',Arte)
           elige.innerHTML="ELIGE TU CATEGORIA"
+          localStorage.removeItem('cine_multiple')
       }
     
       PoperMein()
 }
 function Deporte() {
+    let Deporte='deporte_Pregunata_directa'
+    let categoria='deporte_Pregunata_directa'
     elige.innerHTML=" Star"
     DeporteCategoria.classList.toggle('star')
     SeleccionDeCategoria.classList.toggle('star')
@@ -166,7 +179,7 @@ function Deporte() {
         CineCategoria.removeEventListener('click',Cine)
         ConomientoGeneralCategoria.removeEventListener('click',conocimiento) 
         video_juego_categoria.removeEventListener('click',video)
-  
+  LocalCategoria(Deporte,categoria)
       } else {
           console.log("no tiene la class");
           musica_categoria.addEventListener('click',musica)
@@ -175,6 +188,7 @@ function Deporte() {
           ConomientoGeneralCategoria.addEventListener('click',conocimiento) 
           video_juego_categoria.addEventListener('click',video)
           elige.innerHTML="ELIGE TU CATEGORIA"
+          localStorage.removeItem('deporte_Pregunata_directa')
       }
       PoperMein()
 }
@@ -208,6 +222,7 @@ option1.setAttribute("value", "Pregunata directa");
     body.appendChild(select);
     select.classList.add("input")
     const footer=document.createElement("div")
+    
     contenedor.appendChild(footer)
     const cerrar=document.createElement("button")
     const acectar=document.createElement("button")
@@ -226,7 +241,7 @@ option1.setAttribute("value", "Pregunata directa");
         
     })
     cerrar.innerHTML="cerrar"
-    a.href="file:///C:/Users/javacrispt/Desktop/Trivia/src/app/sectionDeLaPregunta/Pregunta.html"
+    a.href="http://127.0.0.1:5500/src/app/sectionDeLaPregunta/Pregunta.html"
     a.innerHTML="acectar"
 
     footer.classList.add("footerPoper")   
